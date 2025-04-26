@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sukoon – Find Your Peace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            background-color: #e9f5ec;
+            overflow-x: hidden;
+            color: #3e4e42;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #d2e4d6;
+            font-family: 'Playfair Display', serif;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            letter-spacing: 2px;
+            color: #3e4e42;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #3e4e42;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #a8d5ba;
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #f0f8f3;
+            margin: 40px auto;
+            width: 80%;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1, .hero h3 {
+
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+
+        font-family: 'Georgia'; }
+.hero-heading {
+  font-family: 'Times New Roman'; 
+  font-weight: bold;
+  font-size: 3rem; /* adjust as needed */
+  text-align: center;
+  color: #2e3d2f; /* tweak if you want a richer tone */
+}
+
+        .hero h3 {
+            animation-delay: 1s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .floating-leaf {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            font-size: 2rem;
+            animation: floatLeaf 10s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatLeaf {
+            0% {
+                transform: translateX(0) translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateX(-30px) translateY(300px) rotate(180deg);
+            }
+            100% {
+                transform: translateX(30px) translateY(600px) rotate(360deg);
+            }
+        }
+
+        .tiled-section {
+            background-image: 
+                linear-gradient(to bottom, rgba(233, 245, 236, 0.9), rgba(210, 228, 214, 0.6)),
+                url("{{ url_for('static', filename='images/bg.jpg') }}");
+            background-repeat: repeat;
+            background-size: 90px 150px;
+            height: 600px;
+            margin-top: 40px;
+            border-top: 1px solid #c3d8c5;
+        }
+
+        .features-section {
+            background-color: #f0f8f3;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .features-subtext {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: #506551;
+        }
+
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            background-color: #ffffff;
+            border: 1px solid #d2e4d6;
+            border-radius: 16px;
+            padding: 20px;
+            width: 220px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .feature-item h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #3e4e42;
+        }
+
+        .feature-item span {
+            display: block;
+            font-size: 1.1em;
+            color: #4e6456;
+        }
+
+        .feature-item p {
+            font-size: 0.95em;
+            color: #57695d;
+        }
+/* Gradient Background for Features Section */
+.features-section {
+  background: linear-gradient(to bottom, #cddfd6, #fcefeb);
+  padding: 4rem 2rem;
+}
+
+/* Adjust footer color to match the soft pink at the bottom */
+footer {
+  background-color: #fcefeb;
+  padding: 2rem;
+  color: #333; /* Make sure text is still readable */
+}
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+        
+            font-size: 0.9em;
+            margin-top: -10px;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #c3d8c5;
+            margin: 10px 0;
+        }.features-section {
+    padding: 60px 40px;
+    background-color: #f0f8f3;
+}
+
+.features-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    flex: 1;
+}
+
+.feature-item {
+    background-color: #ffffff;
+    border: 1px solid #d2e4d6;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    min-height: 180px;
+}
+
+.feature-item h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: #3e4e42;
+}
+
+.feature-item span {
+    display: block;
+    font-size: 1.1em;
+    color: #4e6456;
+}
+
+.feature-item p {
+    font-size: 0.95em;
+    color: #57695d;
+}
+.features-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 8%;
+    background-color: #fff7f2;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.feature-text {
+    width: 55%;
+    text-align: left;
+    color: #4a4a4a;
+}
+
+.feature-image {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.feature-image img {
+    max-width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    object-fit: cover;
+}
+
+
+
+.feature-item p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1em;
+    color: #4f4f4f;
+    line-height: 1.6em;
+}
+.features-title {
+    text-align: center;
+    font-size: 3.5rem; /* Large & elegant */
+    font-weight: 500;
+    color: #3c2e24; /* Deep brown or earthy tone */
+    font-family: 'Georgia', serif; /* Elegant font */
+    margin-top: 10px;
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+  }
+  .about-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 6rem;
+  background-color: #ffeceb; /* your pastel pink */
+  scroll-margin-top: 80px; /* for smoother scroll-to effect */
+}
+
+.about-text {
+  width: 50%;
+}
+
+.about-text h2 {
+  font-size: 3rem;
+  font-family: 'Georgia', serif;
+  color: #3c2e24;
+}
+
+.about-text p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #3c2e24;
+  line-height: 1.6;
+}
+
+.learn-more-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #3c2e24;
+  color: #3c2e24;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.learn-more-btn:hover {
+  background-color: #3c2e24;
+  color: #fff;
+}
+
+.about-image {
+  width: 45%;
+  overflow: hidden;
+}
+
+.zoom-img {
+  width: 100%;
+  transition: transform 1s ease;
+}
+
+.about-section.in-view .zoom-img {
+  transform: scale(1.1);
+}
+.about-section {
+  background: linear-gradient(to bottom, #f1f4f0, #f7ece8); /* soft sage to blush beige */
+  padding: 4rem 2rem;
+}
+
+  html {
+  scroll-behavior: smooth;
+}
+.about-text {
+  background-color: rgba(243, 229, 221, 0.7); /* soft muted blush-beige with transparency */
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(4px); /* gives it that subtle glassy touch */
+}
+.about-text h2 {
+  font-size: 2.2rem;
+  color: #3b2c28; /* elegant deep brown */
+  font-family: 'Georgia', serif; /* more graceful serif vibe */
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  font-size: 1.05rem;
+  color: #5a4a45; /* soft brown-gray for readability */
+  line-height: 1.7;
+  font-family: 'Quicksand', sans-serif;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="static/images/bg.jpg" alt="Sukoon logo" height="90" width="70" style="border-radius: 50px;">
+        <hr>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="{{ url_for('relax') }}">Relax</a>
+            <a href="{{ url_for('mood') }}">Mood Tracker</a>
+            <a href="{{ url_for('journal') }}">Journal</a>
+            <a href="{{ url_for('connect') }}">Connect</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 style="font-size: 3.5rem;">WELCOME TO SUKOON</h1>
+            <h3 style="font-size: 1.5rem;">Your peaceful corner of the internet 🌿</h3>
+            
+
+
+        </section>
+        <div class="floating-leaf">🍃</div>
+    </main>
+
+    <div class="tiled-section"></div>
+    
+    <section class="features-section">
+        <!-- Your content -->
+      
+      
+        
+        <div class="features-wrapper">
+            
+     
+            
+
+            <div class="features-grid" id="features">
+                
+                <h2 class="features-title">Our Features  </h2>
+
+                  <br>
+                <div class="feature-item">
+                    
+                    <h3>01<br><span>RELAXATION ACTIVITIES</span></h3>
+                    <p>Discover calming tools like doodles, soothing sounds, and nature visuals — all crafted to bring peace to your mind and body.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>02<br><span>MOOD TRACKER</span></h3>
+                    <p>Tune in to your emotions with our gentle mood quiz. Reflect, assess, and receive kind suggestions tailored to your state of mind.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>03<br><span>JOURNAL</span></h3>
+                    <p>Write freely in your personal space — a digital sanctuary for your thoughts, reflections, and inner journey.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>04<br><span>CONNECT</span></h3>
+                    <p>Reach out, share anonymously, and feel heard in a warm, understanding community built on empathy and support.</p>
+                </div>
+            </div>
+            <div class="feature-image">
+                <img src="{{ url_for('static', filename='images/relax.jpg') }}" alt="Relaxing image" style="width: 100%; border-radius: 10px;margin-top: 90px;" />
+                >
+
+            </div>
+            <section id="about" class="about-section">
+                <div class="about-text">
+                  <h2>About Sukoon</h2>
+                  <p>
+                    At Sukoon, we believe mental wellness begins with small, meaningful steps. Whether it’s finding peace in silence, expressing emotions through journaling, or connecting with others who understand, we’re here for you. Sukoon is your gentle companion on the journey toward self-care, balance, and inner calm.
+<br>
+                    Let’s create space for peace — one moment at a time.
+                  </p>
+                  <a href="#" class="learn-more-btn">Learn More</a>
+                </div>
+                <div class="about-image">
+                  <img src="{{ url_for('static', filename='images/hands.jpg') }}".jpg" alt="People holding hands" class="zoom-img">
+                </div>
+              </section>
+              
+        </div>
+    </section>
+    
+            
+        
+    </section>
+    <script>
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+            }
+          },
+          {
+            threshold: 0.3,
+          }
+        );
+      
+        const aboutSection = document.querySelector('.about-section');
+        observer.observe(aboutSection);
+      </script>
+      <script>
+        if (window.location.hash) {
+          window.history.replaceState(null, null, window.location.pathname);
+          window.scrollTo(0, 0);
+        }
+      </script>
+      
+    <footer>
+        <p>&copy; 2025 Sukoon. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

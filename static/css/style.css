@@ -1,0 +1,106 @@
+/* static/css/style.css */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fdfaf6;
+    color: #333;
+}
+
+header {
+    background-color: #d1e8e2;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #1e3d59;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #1e3d59;
+    font-weight: bold;
+}
+
+.hero {
+    padding: 3rem;
+    text-align: center;
+    background-color: #f8f1f1;
+    border-radius: 10px;
+    margin: 2rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #d1e8e2;
+    color: #1e3d59;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.features-section {
+    background-color: #ffe6f0;
+    text-align: center;
+    padding: 60px 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.features-section h2 {
+    font-size: 2.5em;
+    color: #3c2b30;
+    margin-bottom: 10px;
+}
+
+.features-subtext {
+    font-size: 1.2em;
+    color: #6b4c57;
+    margin-bottom: 40px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.feature-item h3 {
+    font-size: 1.3em;
+    color: #5e444a;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.feature-item h3 span {
+    display: block;
+    font-size: 1em;
+    color: #3c2b30;
+    margin-top: 5px;
+}
+
+.feature-item p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.95em;
+    color: #4f4f4f;
+    line-height: 1.6em;
+}
+.features-title {
+    text-align: center;
+    font-size: 3rem; /* Large & elegant */
+    font-weight: 600;
+    color: #3c2e24; /* Deep brown or earthy tone */
+    font-family: 'Georgia', serif; /* Elegant font */
+    margin-top: 61px;
+    margin-bottom: 50px;
+    letter-spacing: 5px;
+  }
+  
+  

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Relax – Sukoon</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom, #d9f2e6, #f9e0e8);
+      color: #333;
+    }
+
+    header {
+      background-color: #ffffffcc;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+  
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #4a4a4a;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #6b7a75;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #9c6b8f;
+    }
+
+   
+    footer {
+      background-color: #fcefeb;
+      text-align: center;
+      padding: 20px 0;
+      color: #3e4e42;
+    }
+
+    section {
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffffffcc;
+      margin: 30px auto;
+      max-width: 900px;
+      border-radius: 20px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+      color: #4a4a4a;
+    }
+
+    audio, canvas {
+      margin-top: 15px;
+    }
+
+    canvas {
+      border: 2px dashed #ccc;
+      background-color: #fffefb;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .controls button {
+      margin: 8px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #a4779c;
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .controls button:hover {
+      background-color: #815677;
+    }
+
+    .breathing-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: #a8c9ae;
+      animation: breathe 6s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.6); }
+    }
+
+    .affirmation {
+      font-style: italic;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: #6b7a75;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <nav style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div style="display: flex; gap: 20px;">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('relax') }}">Relax</a>
+        <a href="{{ url_for('mood') }}">Mood Tracker</a>
+        <a href="{{ url_for('journal') }}">Journal</a>
+        <a href="{{ url_for('connect') }}">Connect</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        
+        <h1 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #4a4a4a;">Relax</h1>
+        <img src="{{ url_for('static', filename='images/bg.jpg') }}" alt="Sukoon Logo" style="height: 40px;">
+      </div>
+    </nav>
+  
+  </header>
+
+  <main>
+    <section>
+      <h2>🧘 Guided Meditation</h2>
+      <audio controls>
+        <source src="{{ url_for('static', filename='audio/meditation.mp3') }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </section>
+
+    
+
+    <section>
+      <h2>Doodle Space</h2>
+      <p>Draw until your mind feels light.</p>
+      <canvas id="doodle" width="600" height="300"></canvas>
+      <div class="controls">
+        <button onclick="clearCanvas()">Clear</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Nature Sounds</h2>
+      <div class="controls">
+        <button onclick="toggleSound('rain')">Rain</button>
+        <button onclick="toggleSound('forest')">Forest</button>
+        <button onclick="toggleSound('ocean')">Ocean</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>💬 Daily Affirmation</h2>
+      <p id="affirmation-text" class="affirmation">"You are safe. You are calm. You are enough."</p>
+    </section>
+
+    <section>
+      <h2>Breathing Exercise</h2>
+      <p>Breathe in... Breathe out...</p>
+      <div class="breathing-circle"></div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Sukoon. All rights reserved.
+  </footer>
+
+  <audio id="rain" loop src="{{ url_for('static', filename='audio/rain.mp3') }}"></audio>
+  <audio id="forest" loop src="{{ url_for('static', filename='audio/forest.mp3') }}"></audio>
+  <audio id="ocean" loop src="{{ url_for('static', filename='audio/ocean.mp3') }}"></audio>
+
+  <script>
+    const canvas = document.getElementById('doodle');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+    canvas.onmousedown = () => drawing = true;
+    canvas.onmouseup = () => drawing = false;
+    canvas.onmousemove = (e) => {
+      if (!drawing) return;
+      ctx.fillStyle = "#4a4a4a";
+      ctx.beginPath();
+      ctx.arc(e.offsetX, e.offsetY, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+    };
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    const sounds = ['rain', 'forest', 'ocean'];
+    function toggleSound(id) {
+      const el = document.getElementById(id);
+      if (el.paused) {
+        sounds.forEach(s => {
+          if (s !== id) document.getElementById(s).pause();
+        });
+        el.play();
+      } else {
+        el.pause();
+      }
+    }
+
+    const affirmations = [
+      "You are safe. You are calm. You are enough.",
+      "Peace begins with a single breath.",
+      "Release what no longer serves you.",
+      "Inhale peace, exhale tension.",
+      "You are allowed to take things slow."
+    ];
+    let affIndex = 0;
+    setInterval(() => {
+      affIndex = (affIndex + 1) % affirmations.length;
+      document.getElementById("affirmation-text").innerText = affirmations[affIndex];
+    }, 10000);
+  </script>
+</body>
+</html>
